@@ -1,6 +1,6 @@
 # SI-GuidedProject-597912-1697648513
 To open the Project Developeent Phase folder to access code files:
-- Download all zip fiiles, Project Development Phase 001.7z to 004.7z
+- Download all zip fiiles, Project Development Phase.7z.001 to .7z.004
 - Store them in the same place
 - Use 7Zip to extract only the first file i.e. Project Development Phase.7z 001
 
