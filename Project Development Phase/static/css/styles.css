@@ -1,0 +1,411 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+body{
+    background-color: rgb(189, 228, 168);
+    z-index: 0;
+}
+a{
+    text-decoration: none;
+}
+#navbar
+{
+    background-color: rgb(83,122,90);
+    position: fixed;
+    top: 0;
+    height:120px;
+    width:100%;
+    z-index: 1;
+}
+#logo{
+    text-align: center;
+    font-size: 50px;
+    position:relative;
+    top:5px;
+}
+#toggleMenu{
+    width:100%;
+    font-size: 17px;
+    position:absolute;
+    top: 90px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.Menu
+{
+    transition: all;
+    transition-duration: 0.4s;
+}
+#home:hover{
+    color:rgb(175,56,0);
+}
+#learn_more:hover{
+    color:rgb(175,56,0);
+}
+#tc:hover{
+    color:rgb(175,56,0);
+}
+#abt:hover{
+    color:rgb(175,56,0);
+}
+.content{
+    position: relative;
+    top: 120px;
+    width: 100%;
+    height: 510px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+}
+.Butt{
+    width:500px;
+    display: flex;
+    justify-content: space-around;
+}
+.buttons{
+    color: whitesmoke;
+    font-size: 20px;
+    background-color: gray;
+    border-radius: 30px;
+    border-color: transparent;
+    padding: 20px;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+}
+#law:hover{
+    background-color: rgb(57,79,73);
+    font-size: 1.4rem;
+}
+#public:hover{
+    background-color: rgb(57,79,73);
+    font-size: 1.4rem;
+}
+/*-----------------------------------------------------*/
+#t_content
+{
+    position: absolute;
+    top: 120px;
+    width: 100%;
+    height: 512px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+#terms{
+    color:rgb(57,79,73);
+}
+#A_Content{
+    background-color: rgb(215, 242, 186);
+    position: relative;
+    top: 130px;
+    left: 150px;
+    height: 490px;
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 2px white;
+    border-radius: 20px;
+}
+.person{
+    height: 140px;
+    width: 140px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 50%;
+}
+.personInfo{
+    height: 140px;
+    width: 800px;
+    border: dotted 2px white;
+    border-radius: 15px;
+}
+#person1{
+    background-image: url('../images/person1.jpeg');
+    background-size: cover;
+}
+#person2{
+    background-image: url('../images/person2.jpg');
+    background-size: cover;
+}
+#person3{
+    background-image: url('../images/person3.jpg');
+    background-size: cover;
+}
+#name1{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+#name2{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#name3{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#Per1{
+    margin-left: 5px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.person1content{
+    color: black;
+}
+#Per2{
+    margin-left: 5px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.person2content{
+    color: black;
+}
+#Per3{
+    margin-left: 5px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.person3content{
+    color: black;
+}
+.Mail{
+    color: black;
+    transition: all;
+}
+.Mail:hover{
+    color: rgb(83,122,90);
+}
+.Contact{
+    color: black;
+    transition: all;
+}
+.Contact:hover{
+    color: rgb(83,122,90);
+}
+#L_Content{
+    position: relative;
+    top: 120px;
+    height: 650px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#Explanation{
+    background-color: rgb(215, 242, 186);
+    position: relative;
+    top: 630px;
+    height: auto;
+    width: 1000px;
+    padding: 25px;
+    border: 2px dotted white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Paragraph{
+    font-size: 25px;
+    color: black;
+    line-height: 40px;
+    
+}
+#ResNetInfo{
+    color: black;
+    text-decoration: underline;
+    transition: all;
+}
+#ResNetInfo:hover{
+    color: rgb(83,122,90);;
+}
+#ResNetImage{
+    width: 700px;
+    height: 300px;
+}
+#SubHeading1{
+    align-self: flex-start;
+    font-size: 27px;
+    font-weight: bold;
+}
+#SubHeading2{
+    align-self: flex-start;
+    font-weight: bold;
+    font-style: italic;
+}
+#SubHeading3{
+    align-self: flex-start;
+    font-weight: bold;
+    font-style: italic;
+}
+.leContent{
+    position: relative;
+    top: 120px;
+    height: 512px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+#ButtonBox{
+    background-color: rgb(215, 242, 186);
+    height: 470px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; 
+}
+#alwaysVisibleButtons{
+    height: 100px;
+    width: 290px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#cameraSpecificButtons{
+    height: 100px;
+    width: 240px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display: none; 
+}
+#ButtonCategory1{
+    height: 50px;
+    width: 100px;
+}
+#ButtonCategory2{
+    height: 50px;
+    width: 240px;
+}
+#resultButton{
+    height: 100px;
+    width: 240px;
+    display: none;
+}
+.visibleButtons{
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+    border-color: rgb(83,122,90);
+    transition: all;
+    transition-duration: 0.4s;
+}
+.visibleButtons:hover{
+    background-color: rgb(83,122,90);
+    font-size: 1.3rem;
+}
+.cameraButton{
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+    border-color: rgb(83,122,90);
+    transition: all;
+    transition-duration: 0.4s;
+}
+.cameraButton:hover{
+    background-color: rgb(83,122,90);
+    font-size: 1.4rem;
+}
+.resButton{
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+    border-color: rgb(83,122,90);
+    transition: all;
+    transition-duration: 0.4s;
+}
+.resButton:hover{
+    background-color: rgb(83,122,90);
+    font-size: 1.4rem;
+}
+#inputPictureDisplay{
+    height: 470px;
+    width: 470px;
+    overflow: hidden;
+    display: none;
+}
+#uploadedImage{
+    max-width: 100%;
+    max-height: 100%;
+}
+#resultBox{
+    background-color: rgb(215, 242, 186);
+    height: 470px;
+    width: 500px;
+    display: none;
+}
+#result{
+    height: 100px;
+    width: 250px;
+    position: relative;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#afterClassificationButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.postResult{
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+    border-color: rgb(83,122,90);
+    transition: all;
+    transition-duration: 0.4s;
+}
+#print:hover{
+    background-color: rgb(83,122,90);
+    font-size: 1.4rem;   
+}
+#back:hover{
+    background-color: rgb(83,122,90);
+    font-size: 1.4rem;   
+}
+#report{
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+    border-color: rgb(83,122,90);
+    transition: all;
+    transition-duration: 0.4s;
+}
+#report:hover{
+    background-color: rgb(83,122,90);
+    font-size: 1.4rem;   
+}

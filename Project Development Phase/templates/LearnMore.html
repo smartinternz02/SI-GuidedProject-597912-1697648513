@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <h2 id="logo">Crime Vision</h2>
+            <div id="toggleMenu">
+                <a href="/" id="home" class="Menu">Home</a>
+                <a href="/LearnMore.html" id="learn_more" class="Menu">Learn More</a>
+                <a href="/TandC.html" id="tc" class="Menu">Terms and Conditions</a>
+                <a href="/AboutUs.html" id="abt" class="Menu">About Us</a>
+            </div>
+        </div>
+    </header>
+    <div id="L_Content">
+        <div id="Explanation">
+            <p id = "Paragraph1" class="Paragraph">This web application utilizes Deep Learning techniques to classify Images based on the type of crime. A pre-trained model called Resnet50 is trained on a custom dataset to achieve the task</p>
+            <br>
+            <p id="Paragraph2" class="Paragraph"><a href="https://datagen.tech/guides/computer-vision/resnet-50/" id="ResNetInfo" target="_blank">ResNet50</a> is a popular convolutional neural network (CNN) architecture used for image classification and feature extraction in deep learning. It is a variant of the ResNet (Residual Network) architecture, which was introduced by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun in their 2015 paper titled "Deep Residual Learning for Image Recognition."</p>
+            <br>
+            <img src="../static/images/ResNet50.png" alt="Image not avaliable" id="ResNetImage">
+            <br>
+            <p id="Paragraph3" class="Paragraph">ResNet-50 is specifically known for its depth, featuring 50 layers of convolutional and fully connected layers. The key innovation in ResNet is the use of residual connections, also known as skip connections or shortcut connections. These connections allow the network to learn residual functions, making it easier to train very deep networks without encountering the vanishing gradient problem.</p>
+            <br>
+            <p id="Paragraph4" class="Paragraph">The ResNet-50 model consists of several building blocks, each of which includes multiple convolutional layers, batch normalization, and ReLU activation functions. Residual connections skip one or more of these blocks, allowing the model to directly learn the difference (residual) between the input and the output of the block.</p>
+            <br>
+            <p class="Paragraph" id="SubHeading1">Learn To Use The Application</p>
+            <p id="Paragraph5" class="Paragraph">This Application has its features divided among Common public users and users belonging to the Law Enforcement</p>
+            <p id="Paragraph6" class="Paragraph">The Home page contains two buttons, Law Enforcement, and Public, are available which take the user to the respective page</p>
+            <p id="SubHeading2" class="Paragraph">Common Public:</p>
+            <ul>
+                <li class="Paragraph">To Upload a pre-existing image from local storage, click on the Upload Button</li>
+                <li class="Paragraph">To Click an Image using the Camera, click on the Click Picture Button. Capture, Retake and Done buttons will be available after clicking on Click Picture. To save the image, click on Done</li>
+                <li class="Paragraph">Click on Classify to see the result</li>
+                <li class="Paragraph">To select a new image, click on Back</li>
+                <li class="Paragraph">To report to authorities, click on Report. (report button sends current time date and location details)</li>
+            </ul>
+            <p id="SubHeading3" class="Paragraph">Law Enforcement:</p>
+            <ul>
+                <li class="Paragraph">To Upload a pre-existing image from local storage, click on the Upload Button</li>
+                <li class="Paragraph">To Click an Image using the Camera, click on the Click Picture Button. Capture, Retake and Done buttons will be available after clicking on Click Picture. To save the image, click on Done</li>
+                <li class="Paragraph">Click on Classify to see the result</li>
+                <li class="Paragraph">To select a new image, click on Back</li>
+                <li class="Paragraph">To print the result, click on Print (Print prints a PDF containing the image and result along with time and location. [ time and location are based on the device that generated the result and not on the image depicted])</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

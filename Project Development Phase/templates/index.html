@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <h2 id="logo">Crime Vision</h2>
+            <div id="toggleMenu">
+                <a href="/" id="home" class="Menu">Home</a>
+                <a href="/LearnMore.html" id="learn_more" class="Menu">Learn More</a>
+                <a href="/TandC.html" id="tc" class="Menu">Terms and Conditions</a>
+                <a href="/AboutUs.html" id="abt" class="Menu">About Us</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="Butt">
+            <button class="buttons" id="law" onclick="LAW()">Law Enforcement</button>
+            <button class="buttons" id="public" onclick="PUBLIC()"><pre>         Public         </pre></button>
+        </div>
+        <script>
+            function LAW(){
+                window.location.href = "LawEnforcement";
+            }
+            function PUBLIC(){
+                window.location.href = "Public"; 
+            }
+        </script>
+        
+    </div>    
+</body>
+</html>

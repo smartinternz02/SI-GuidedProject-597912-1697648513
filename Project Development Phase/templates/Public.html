@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+    <!-- <script src="{{ url_for('static', filename='script.js') }}"></script> -->
+
+</head>
+<body>
+    
+    <header>
+        <div id="navbar">
+            <h2 id="logo">Crime Vision</h2>
+            <div id="toggleMenu">
+                <a href="/" id="home" class="Menu">Home</a>
+                <a href="/LearnMore.html" id="learn_more" class="Menu">Learn More</a>
+                <a href="/TandC.html" id="tc" class="Menu">Terms and Conditions</a>
+                <a href="/AboutUs.html" id="abt" class="Menu">About Us</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="leContent">
+
+        <div id="ButtonBox">
+
+            <div id="alwaysVisibleButtons">
+                <button class="visibleButtons" id="upload" onclick=" HideCameraFunctions();setButton()">Upload</button>
+                <script> // to hide camera buttons on clciking upload
+                    var currentButton = null;
+                    function setButton(){
+                        currentButton = 1;
+                    }
+                    function HideCameraFunctions(){
+                            document.getElementById('imagePreview').src = '';
+                            document.getElementById('imagePreview').style.display = 'none';
+                            if(stream){
+                                const tracks = stream.getTracks();
+                                tracks.forEach((track) => track.stop());
+                            }
+                            document.getElementById('cameraFeed').style.display = 'none';
+                            document.getElementById('cameraSpecificButtons').style.display = 'none';
+                            document.getElementById('inputPictureDisplay').style.display = 'none';
+                        }
+
+                </script>
+                <button class="visibleButtons" id="camera" onclick="ShowCameraFunctions(); displayCameraFeed(); setButton2()">Click Picture</button>
+                <script> // to show camera related buttons on clicking on CLick image
+                    function setButton2(){
+                        currentButton = 0;
+                    }
+                    let stream = null
+                    function displayCameraFeed(){
+                            document.getElementById('imagePreview').src = '';
+                            document.getElementById('imagePreview').style.display = 'none';
+                            // camera feed
+                            navigator.mediaDevices.getUserMedia({video:true}).then((mediaStream) => {
+                            stream = mediaStream;
+                            document.getElementById('cameraFeed').srcObject = mediaStream;
+                            document.getElementById('cameraFeed').style.display = 'block';
+                        }).catch((error) => {
+                            console.error("Error accessing Camera:", error);
+                        });
+                    }
+                    function ShowCameraFunctions(){
+                        //camera feed
+                        uploadedImage.style.display = 'none';
+                        imageDisplay.style.display = 'block';
+                        imageDisplay.style.display = 'flex';
+                        imageDisplay.style.justifyContent = 'center';
+                        imageDisplay.style.alignItems = 'center';
+                        // buttons display
+                        document.getElementById('cameraSpecificButtons').style.display = 'block';
+                        document.getElementById('ButtonCategory2').style.display = 'none';
+                        document.getElementById('cameraSpecificButtons').style.display = 'flex';
+                        document.getElementById('cameraSpecificButtons').style.flexDirection = 'row';
+                        document.getElementById('ButtonCategory1').style.display = 'block';
+                        document.getElementById('ButtonCategory1').style.display = 'flex';
+                        document.getElementById('ButtonCategory1').style.justifyContent = 'center';
+                        document.getElementById('ButtonCategory1').style.alignItems = 'center';
+                        document.getElementById('resultButton').style.display = 'none';
+                    }
+                </script>
+            </div>
+
+            <div id="cameraSpecificButtons">
+
+                <div id="ButtonCategory1">
+                    <button id="capture" class="cameraButton" onclick="ShowAfterCaptureButtons(); previewCapturedImage()">capture</button>
+                    <script>
+                        let imageDataUrl;
+                        function previewCapturedImage()
+                        {
+                            //Image preview and turn off camera
+                            const canvas = document.createElement("canvas");
+                            canvas.width = document.getElementById('cameraFeed').videoWidth;
+                            canvas.height = document.getElementById('cameraFeed').videoHeight;
+                            canvas.getContext("2d").drawImage(document.getElementById('cameraFeed'), 0, 0);
+                            imageDataUrl = canvas.toDataURL("image/jpeg");
+                            document.getElementById('imagePreview').src = imageDataUrl;
+                            document.getElementById('imagePreview').style.display = 'block';
+                            document.getElementById('cameraFeed').style.display = 'none';
+                            if(stream){
+                                const tracks = stream.getTracks();
+                                tracks.forEach((track) => track.stop());
+                            }
+                        }
+                        function ShowAfterCaptureButtons()
+                        {
+                            document.getElementById('ButtonCategory1').style.display = 'none';
+                            document.getElementById('ButtonCategory2').style.display = 'block';
+                            document.getElementById('ButtonCategory2').style.display = 'flex';
+                            document.getElementById('ButtonCategory2').style.flexDirection = 'row';
+                            document.getElementById('ButtonCategory2').style.justifyContent = 'space-evenly';
+                            document.getElementById('ButtonCategory2').style.alignItems = 'center';
+                        }
+                    </script>
+                </div>
+
+                <div id="ButtonCategory2">
+                    <button id="retake" class="cameraButton" onclick="ShowCameraFunctions(); displayCameraFeed()">retake</button>
+                    <button id="done" class="cameraButton" onclick="saveToFolder(); SaveCapturedImage(); ShowClassifyButton(); ">done</button>
+                    <script>
+                        function saveToFolder(){
+                            const imageData = {image: imageDataUrl};
+                            fetch('Upload_to_folder_camera', {
+                                method:'POST',
+                                headers:{'Content-Type':'application/json',},
+                                body: JSON.stringify(imageData)
+                            }).then(response => response.text())
+                            .then(data => {console.log(data);})
+                            .catch(error => {console.error('Error', error);});
+                        }
+                        function SaveCapturedImage(){
+                            document.getElementById('cameraSpecificButtons').style.display = 'none';
+                        }
+                        function ShowClassifyButton(){
+                            document.getElementById('resultButton').style.display = 'block';
+                            document.getElementById('resultButton').style.display = 'flex';
+                            document.getElementById('resultButton').style.alignItems = 'center';
+                            document.getElementById('resultButton').style.justifyContent = 'center';
+                        }
+                    </script>
+                </div>
+                
+            </div>
+
+            <div id="resultButton">
+
+                <button class="resButton" id="res" onclick="Classify();">Classify</button>
+                <script>
+                    function showResultBox(){
+                        document.getElementById('resultBox').style.display = 'block';
+                        document.getElementById('resultBox').style.display = 'flex';
+                        document.getElementById('resultBox').style.flexDirection = 'column';
+                        document.getElementById('resultBox').style.alignItems = 'center';
+                        document.getElementById('resultBox').style.justifyContent = 'space-around';
+                        document.getElementById('ButtonBox').style.display = 'none';
+                    }
+                    function Classify(){
+                        if(currentButton == 1)
+                        {
+                            const filename = imageInput.files[0].name
+                            const fd = new FormData();
+                            fd.append('filename', filename);
+                            fetch('/Classify', {method:'POST', body: fd, headers:{'currentButton':currentButton}})
+                            .then(response => response.text())
+                            .then(data => {document.getElementById('dispRes').textContent = data;showResultBox();})
+                            .catch(error => console.error('Error:', error));    
+                            document.getElementById('dispRes').style.display = 'block';
+                            document.getElementById('dispRes').style.fontSize = '40px';
+                            document.getElementById('dispRes').style.color = 'black';
+                            document.getElementById('afterClassificationButton').style.display = 'block';
+                            document.getElementById('afterClassificationButton').style.display = 'fle   x';
+                            document.getElementById('afterClassificationButton').style.flexDirection = 'row';
+                            document.getElementById('afterClassificationButton').style.justifyContent = 'space-evenly';
+                        }
+                        if(currentButton == 0)
+                        {
+                            fetch('/Classify', {method: 'POST', headers:{'currentButton':currentButton}})
+                            .then(response => response.text())
+                            .then(data => {document.getElementById('dispRes').textContent = data; showResultBox();})
+                            .catch(error => console.error('Error', error));
+                            document.getElementById('dispRes').style.display = 'block';
+                            document.getElementById('dispRes').style.fontSize = '40px';
+                            document.getElementById('dispRes').style.color = 'black';
+                            document.getElementById('afterClassificationButton').style.display = 'block';
+                            document.getElementById('afterClassificationButton').style.display = 'fle   x';
+                            document.getElementById('afterClassificationButton').style.flexDirection = 'row';
+                            document.getElementById('afterClassificationButton').style.justifyContent = 'space-evenly';
+                        }
+                    }
+                </script>
+            </div>
+
+        </div>
+
+        <div id="inputPictureDisplay" class="uploadPortal">
+            <img src="" alt="" id="uploadedImage" style="display: none;">
+            <video id="cameraFeed" autoplay playsinline style="display: none;"></video>
+            <img id="imagePreview" style="display: none;">
+        </div>
+
+        <input type="file" name="" id="imageInput" accept="image/*" style="display: none;">
+
+        <script>
+            const uploadButton = document.getElementById('upload');
+            const imageInput = document.getElementById('imageInput');
+            const imageDisplay = document.getElementById('inputPictureDisplay');
+            const uploadedImage = document.getElementById('uploadedImage');
+            const classifyButton = document.getElementById('res')
+            // file upload
+            uploadButton.addEventListener("click", function() {
+                imageInput.click();
+                ShowClassifyButton();
+            });
+
+            //display image
+            imageInput.addEventListener("change", function() {
+                const file = imageInput.files[0];
+                if(file){
+                    const imageURL = URL.createObjectURL(file);
+                    uploadedImage.src = imageURL;
+                    uploadedImage.style.display = 'block';
+                    imageDisplay.style.display = 'block';
+                    imageDisplay.style.display = 'flex';
+                    imageDisplay.style.justifyContent = 'center';
+                    imageDisplay.style.alignItems = 'center';
+
+                    // store image in folder
+                    const formdata = new FormData();
+                    formdata.append("file", file);
+
+                    fetch("/Upload_to_folder", {method:'POST', body:formdata})
+                    .then(response => {console.log("file uploaded and response received", response);
+                    })
+                    .catch(error => {console.error("error sending file to flask:", error);
+                });
+                }
+            });
+        </script>
+
+        <div id="resultBox">
+
+            <div id="result">
+                <span id="dispRes" style="display: none;"></span>
+            </div>
+
+            <div id="afterClassificationButton">
+                <button id="back" class="postResult">Back</button>
+                <script>
+                        document.getElementById('back').addEventListener('click', function() {
+                        fetch('/Back').catch(error => console.error('Error', error));
+                        document.getElementById('ButtonBox').style.display = 'block';
+                        document.getElementById('resultBox').style.display = 'none';
+                        document.getElementById('resultButton').style.display = 'none';
+                        document.getElementById('ButtonBox').style.display = 'flex';
+                        document.getElementById('ButtonBox').style.flexDirection = 'column';
+                        document.getElementById('ButtonBox').style.justifyContent = 'space-evenly';
+                        document.getElementById('ButtonBox').style.alignItems = 'center';
+                        document.getElementById('inputPictureDisplay').style.display = 'none';
+                    });
+                </script>
+                
+                <button id="report" class="ReporttoPhone" onclick="sendAlert()">Report</button>
+                <script>
+                    function sendAlert() {
+                        fetch('/send_sms', {
+                            method: 'POST',
+                        })
+                        .then(response => response.text())
+                        .then(data => alert(data))
+                        .catch(error => console.error('Error:', error));
+                    }
+                </script>
+            </div>
+            
+        </div>
+
+    </div>
+
+</body>
+</html>
