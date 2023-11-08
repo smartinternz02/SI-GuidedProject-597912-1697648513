@@ -1,8 +1,6 @@
 # SI-GuidedProject-597912-1697648513
-To open the Project Developeent Phase folder to access code files:
-- Download all zip fiiles, Project Development Phase.7z.001 to .7z.004
-- Store them in the same place
-- Use 7Zip to extract only the first file i.e. Project Development Phase.7z 001
+BEFORE running app.py, download the model h5 file from here: https://drive.google.com/file/d/1x2HQSPTcQxXrEg3EsB1sWHIqOoeWWpoy/view?usp=sharing
+Access the dataset from the follwoing link: https://www.kaggle.com/datasets/odins0n/ucf-crime-dataset
 
 Since the report button and the print button use free version of external APIs, twilio and IpInfo, these functionalities might not work proprly
 To make them work:
