@@ -3,6 +3,8 @@ BEFORE running app.py, download the model h5 file from here: https://drive.googl
 
 Access the dataset from the follwoing link: https://www.kaggle.com/datasets/odins0n/ucf-crime-dataset
 
+Demonstration video: https://drive.google.com/file/d/1-cZvV6As3FZf6lPJDno-w80zZ_nKLLNA/view?usp=drive_link
+
 Since the report button and the print button use free version of external APIs, twilio and IpInfo, these functionalities might not work proprly
 To make them work:
 - Create twilio account (https://www.twilio.com/login)
